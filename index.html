@@ -24,6 +24,42 @@
       --shadow-orange: 6px 6px 0px #ff4b00;
     }
 
+    /* ── DARK MODE ── */
+    [data-theme="dark"] {
+      --ink: #e8e4db;
+      --paper: #0d0d0d;
+      --paper-light: #161614;
+      --orange: #ff5e1a;
+      --orange-dark: #c23a00;
+      --concrete: #3a3835;
+      --concrete-dark: #9e9a94;
+      --shadow-sm: 4px 4px 0px #ff5e1a44;
+      --shadow-md: 6px 6px 0px #ff5e1a44;
+      --shadow-lg: 10px 10px 0px #ff5e1a44;
+    }
+    [data-theme="dark"] body {
+      background-image: radial-gradient(#252320 1px, transparent 1px);
+    }
+    [data-theme="dark"] .hazard-stripe {
+      background: repeating-linear-gradient(-45deg, #1a1a1a, #1a1a1a 12px, var(--orange) 12px, var(--orange) 24px);
+    }
+    [data-theme="dark"] .marquee-bar { background: #0a0a0a; }
+    [data-theme="dark"] header { background: rgba(10,10,10,0.96); border-bottom-color: #2a2a2a; }
+    [data-theme="dark"] .stat-card { background: #111; border-color: #2a2a2a; }
+    [data-theme="dark"] .spec-table td { border-color: #2a2a2a; }
+    [data-theme="dark"] .part-card { background: #111; border-color: #2a2a2a; }
+    [data-theme="dark"] .reader-box { background: #0d0d0d; }
+    [data-theme="dark"] footer { background: #050505; }
+    [data-theme="dark"] .resource-search-input {
+      background: #111; color: var(--ink); border-color: #3a3835;
+    }
+    [data-theme="dark"] .res-tag-btn { background: #1a1a1a; color: var(--ink); border-color: #3a3835; }
+    [data-theme="dark"] .res-tag-btn:hover, [data-theme="dark"] .res-tag-btn.active { background: var(--orange); color: #fff; }
+    [data-theme="dark"] .res-table-row { border-color: #2a2a2a; }
+    [data-theme="dark"] .res-table-row:hover { background: #151515; }
+    [data-theme="dark"] .res-cat-badge { background: #1a1a1a; }
+    [data-theme="dark"] .res-no-results { color: #555; }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -517,6 +553,152 @@
       margin-bottom: 6px;
     }
 
+    /* DARK MODE TOGGLE BUTTON */
+    .theme-toggle {
+      background: var(--paper-light);
+      border: var(--border-w) solid var(--ink);
+      color: var(--ink);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+    .theme-toggle:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    [data-theme="dark"] .theme-toggle {
+      background: #1a1a1a;
+      border-color: #3a3835;
+    }
+
+    /* RESOURCE TABLE */
+    .resource-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .resource-search-input {
+      flex: 1;
+      min-width: 200px;
+      background: var(--paper-light);
+      border: var(--border-w) solid var(--ink);
+      color: var(--ink);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .resource-search-input::placeholder { color: var(--concrete-dark); }
+    .resource-search-input:focus { border-color: var(--orange); }
+    .res-tags-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .res-tag-btn {
+      background: var(--paper-light);
+      border: 2px solid var(--ink);
+      color: var(--ink);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 5px 12px;
+      cursor: pointer;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      transition: background 0.12s, color 0.12s;
+    }
+    .res-tag-btn:hover, .res-tag-btn.active {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+    .res-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .res-table-head {
+      background: var(--ink);
+      color: var(--paper-light);
+      display: grid;
+      grid-template-columns: 40px 1fr 140px 120px;
+      gap: 0;
+      padding: 10px 16px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      border: var(--border-w) solid var(--ink);
+      margin-bottom: 0;
+    }
+    .res-table-body { border: var(--border-w) solid var(--ink); border-top: none; }
+    .res-table-row {
+      display: grid;
+      grid-template-columns: 40px 1fr 140px 120px;
+      align-items: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--concrete);
+      transition: background 0.1s;
+      gap: 0;
+    }
+    .res-table-row:last-child { border-bottom: none; }
+    .res-table-row:hover { background: var(--paper-light); }
+    .res-row-num { font-size: 0.7rem; color: var(--concrete-dark); font-weight: 700; }
+    .res-row-main {}
+    .res-row-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+    .res-row-title a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.1s, color 0.1s;
+    }
+    .res-row-title a:hover { color: var(--orange); border-bottom-color: var(--orange); }
+    .res-row-desc { font-size: 0.72rem; color: var(--concrete-dark); line-height: 1.4; }
+    .res-cat-badge {
+      display: inline-block;
+      background: var(--paper);
+      border: 1.5px solid var(--ink);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      white-space: nowrap;
+    }
+    .res-part-badge { font-size: 0.72rem; font-weight: 700; color: var(--orange); }
+    .res-no-results {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--concrete-dark);
+      font-size: 0.85rem;
+    }
+    .res-count-label {
+      font-size: 0.75rem;
+      color: var(--concrete-dark);
+      font-weight: 700;
+      padding: 8px 0;
+      text-align: right;
+    }
+    @media (max-width: 768px) {
+      .res-table-head, .res-table-row {
+        grid-template-columns: 1fr 100px;
+      }
+      .res-row-num, .res-part-badge { display: none; }
+    }
+
     /* FOOTER */
     footer {
       background: var(--ink);
@@ -600,8 +782,10 @@
       <nav class="nav-links">
         <a href="#showcase" class="btn">[VIDEO FEED]</a>
         <a href="#curriculum" class="btn">[CURRICULUM]</a>
+        <a href="#resources" class="btn">[RESOURCES]</a>
         <a href="#reader" class="btn btn-orange">[READ STUDY BOOK]</a>
         <a href="Cybersecurity_Management_Study_Book_0xSHARON.pdf" download class="btn btn-dark">[GET PDF]</a>
+        <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle dark/light mode">[◐ THEME]</button>
       </nav>
     </div>
   </header>
@@ -936,32 +1120,141 @@
 
   <!-- INTERACTION SCRIPT -->
   <script>
+    // ── VIDEO ──────────────────────────────────────────────────────────────
     const video = document.getElementById('brag-video');
-
     function toggleVideoPlayback() {
       if (!video) return;
-      if (video.paused) {
-        video.play();
-      } else {
-        video.pause();
-      }
+      video.paused ? video.play() : video.pause();
     }
-
     function toggleFullscreenVideo() {
       if (!video) return;
-      if (video.requestFullscreen) {
-        video.requestFullscreen();
-      } else if (video.webkitRequestFullscreen) {
-        video.webkitRequestFullscreen();
-      }
+      (video.requestFullscreen || video.webkitRequestFullscreen).call(video);
+    }
+    function jumpToPart(partNumber) {
+      document.getElementById('reader')?.scrollIntoView({ behavior: 'smooth' });
     }
 
-    function jumpToPart(partNumber) {
-      const readerSection = document.getElementById('reader');
-      if (readerSection) {
-        readerSection.scrollIntoView({ behavior: 'smooth' });
-      }
+    // ── DARK MODE ──────────────────────────────────────────────────────────
+    const THEME_KEY = 'cybermgmt-theme';
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      const btn = document.getElementById('theme-toggle-btn');
+      if (btn) btn.textContent = theme === 'dark' ? '[◑ THEME]' : '[◐ THEME]';
+      localStorage.setItem(THEME_KEY, theme);
     }
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    }
+    // Load saved preference
+    (function() {
+      const saved = localStorage.getItem(THEME_KEY);
+      if (saved) { applyTheme(saved); return; }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) applyTheme('dark');
+    })();
+
+    // ── RESOURCE TABLE DATA ─────────────────────────────────────────────────
+    const RESOURCES = [
+      // VIDEO
+      { title: 'Professor Messer — CompTIA Security+ SY0-701',  url: 'https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/', desc: 'Full free video course covering all Security+ domains', cat: 'VIDEO', part: '1–10' },
+      { title: 'freeCodeCamp — Full Ethical Hacking Course',      url: 'https://www.youtube.com/watch?v=3Kq1MIfTWCE', desc: '15-hour complete ethical hacking bootcamp', cat: 'VIDEO', part: '2,6' },
+      { title: 'John Hammond — Malware Analysis Playlist',         url: 'https://www.youtube.com/playlist?list=PL1H1sBF1VAKUsYdHZjiURnUKF7VQAuLdm', desc: 'Hands-on malware reverse engineering walkthroughs', cat: 'VIDEO', part: '2,8' },
+      { title: 'NetworkChuck — Networking Fundamentals',           url: 'https://www.youtube.com/playlist?list=PLIhvC56v63IJVXv0GJcl9vO5Z6znCVb1-', desc: 'Beginner-friendly OSI/TCP-IP and routing series', cat: 'VIDEO', part: '1' },
+      { title: 'David Bombal — Cisco & Network Security',          url: 'https://www.youtube.com/@davidbombal', desc: 'Networking, packet captures, pentesting', cat: 'VIDEO', part: '5' },
+      { title: 'LiveOverflow — Binary Exploitation & CTF',         url: 'https://www.youtube.com/@LiveOverflow', desc: 'Advanced binary exploitation, kernel hacking, CTF solutions', cat: 'VIDEO', part: '2,6' },
+      { title: 'SANS Institute — YouTube Channel',                  url: 'https://www.youtube.com/@SANSInstitute', desc: 'Threat intelligence, forensics and IR presentations', cat: 'VIDEO', part: '8,9' },
+      { title: 'IppSec — HackTheBox Walkthroughs',                 url: 'https://www.youtube.com/@ippsec', desc: 'Retired HTB machine walkthroughs for offensive skills', cat: 'VIDEO', part: '2,6' },
+      // TOOLS
+      { title: 'Kali Linux — Official VM Images',                   url: 'https://www.kali.org/get-kali/#kali-virtual-machines', desc: 'Pre-built penetration testing OS images (VirtualBox / VMware)', cat: 'TOOL', part: '2,6' },
+      { title: 'VirtualBox — Free Hypervisor',                      url: 'https://www.virtualbox.org/wiki/Downloads', desc: 'Open-source type-2 hypervisor for lab environments', cat: 'TOOL', part: '1' },
+      { title: 'Wireshark — Packet Analyser',                       url: 'https://www.wireshark.org/download.html', desc: 'Network protocol analyser with live capture', cat: 'TOOL', part: '1,5' },
+      { title: 'Nmap — Network Scanner',                            url: 'https://nmap.org/download.html', desc: 'Open-source network discovery and security auditing', cat: 'TOOL', part: '2,5' },
+      { title: 'Burp Suite Community — Web App Proxy',              url: 'https://portswigger.net/burp/communitydownload', desc: 'Intercept, replay and scan web application traffic', cat: 'TOOL', part: '6' },
+      { title: 'Metasploit Framework — Exploitation',               url: 'https://github.com/rapid7/metasploit-framework', desc: 'World-leading open-source penetration testing framework', cat: 'TOOL', part: '2,6' },
+      { title: 'Anki — Spaced Repetition Flashcards',              url: 'https://apps.ankiweb.net/', desc: 'Free SRS flashcard system for memorizing exam content', cat: 'TOOL', part: '1–10' },
+      { title: 'Ghidra — NSA Reverse Engineering Suite',            url: 'https://ghidra-sre.org/', desc: 'Free open-source reverse engineering tool from the NSA', cat: 'TOOL', part: '2,8' },
+      { title: 'OpenVPN — VPN Software',                            url: 'https://openvpn.net/community-downloads/', desc: 'Open-source VPN implementation for lab tunnels', cat: 'TOOL', part: '5' },
+      { title: 'CyberChef — Data Manipulation',                     url: 'https://gchq.github.io/CyberChef/', desc: 'Web-based encoding, decoding, encryption, hashing', cat: 'TOOL', part: '3,8' },
+      // LABS
+      { title: 'OverTheWire — Bandit (Linux basics)',               url: 'https://overthewire.org/wargames/bandit/', desc: 'Wargame for learning Linux shell and file system basics', cat: 'LAB', part: '1' },
+      { title: 'OverTheWire — Natas (Web Security)',                url: 'https://overthewire.org/wargames/natas/', desc: 'Web server-side security wargame', cat: 'LAB', part: '6' },
+      { title: 'TryHackMe — Pre-Security Path',                     url: 'https://tryhackme.com/path/outline/presecurity', desc: 'Beginner-friendly guided learning path, all free rooms', cat: 'LAB', part: '1,2' },
+      { title: 'TryHackMe — SOC Level 1 Path',                     url: 'https://tryhackme.com/path/outline/soclevel1', desc: 'Blue team focused analyst training', cat: 'LAB', part: '8' },
+      { title: 'PortSwigger Web Security Academy',                  url: 'https://portswigger.net/web-security', desc: 'Free labs for all OWASP Top 10 and beyond', cat: 'LAB', part: '6' },
+      { title: 'HackTheBox — Starting Point',                      url: 'https://www.hackthebox.com/hacker/starting-point', desc: 'Free beginner HTB machines with guided walkthroughs', cat: 'LAB', part: '2,6' },
+      { title: 'OWASP WebGoat — Intentionally Vulnerable App',     url: 'https://owasp.org/www-project-webgoat/', desc: 'Deliberately insecure web app for learning web vulns', cat: 'LAB', part: '6' },
+      { title: 'Immersive Labs — Free Cyber Fundamentals',         url: 'https://www.immersivelabs.com/', desc: 'Browser-based labs covering a wide range of cyber skills', cat: 'LAB', part: '1–10' },
+      // READS
+      { title: 'NIST SP 800-53 Rev 5 — Security Controls',        url: 'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final', desc: 'Comprehensive security and privacy controls catalog', cat: 'READ', part: '9' },
+      { title: 'NIST CSF 2.0 — Cybersecurity Framework',          url: 'https://www.nist.gov/cyberframework', desc: 'Govern, Identify, Protect, Detect, Respond, Recover', cat: 'READ', part: '9' },
+      { title: 'MITRE ATT&CK — Enterprise Matrix',                 url: 'https://attack.mitre.org/matrices/enterprise/', desc: 'Adversary tactics, techniques, and procedures knowledge base', cat: 'READ', part: '2,8' },
+      { title: 'OWASP Top 10 — 2021 Edition',                      url: 'https://owasp.org/www-project-top-ten/', desc: 'The 10 most critical web application security risks', cat: 'READ', part: '6' },
+      { title: 'CIS Benchmarks — Free Downloads',                   url: 'https://www.cisecurity.org/cis-benchmarks', desc: 'Hardening guides for OS, cloud, network, and software', cat: 'READ', part: '1,5,7' },
+      { title: 'CISA — Free Cybersecurity Services',                url: 'https://www.cisa.gov/free-cybersecurity-services-and-tools', desc: 'US government curated list of free security tools', cat: 'READ', part: '8,9' },
+      { title: 'NIS2 Directive — Full Text (EU)',                   url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32022L2555', desc: 'EU Network and Information Security Directive 2.0', cat: 'READ', part: '10' },
+      { title: 'ISACA — CISM Exam Content Outline',                url: 'https://www.isaca.org/credentialing/cism', desc: 'Official domain breakdown for CISM certification', cat: 'READ', part: '9,10' },
+      // SPECS
+      { title: 'RFC 9293 — Transmission Control Protocol',         url: 'https://datatracker.ietf.org/doc/html/rfc9293', desc: 'Authoritative TCP specification (updated 2022)', cat: 'SPEC', part: '1' },
+      { title: 'RFC 8446 — TLS 1.3',                               url: 'https://datatracker.ietf.org/doc/html/rfc8446', desc: 'Transport Layer Security 1.3 full specification', cat: 'SPEC', part: '3' },
+      { title: 'NIST SP 800-207 — Zero Trust Architecture',        url: 'https://csrc.nist.gov/pubs/sp/800/207/final', desc: 'Authoritative ZTA guidance from NIST', cat: 'SPEC', part: '4' },
+      { title: 'RFC 6749 — The OAuth 2.0 Authorization Framework', url: 'https://datatracker.ietf.org/doc/html/rfc6749', desc: 'Core OAuth 2.0 specification', cat: 'SPEC', part: '4' },
+      { title: 'FIPS 186-5 — Digital Signature Standard',          url: 'https://csrc.nist.gov/pubs/fips/186-5/final', desc: 'NIST standard for elliptic curve and RSA digital signatures', cat: 'SPEC', part: '3' },
+      { title: 'NIST SP 800-61 Rev 2 — Incident Response',        url: 'https://csrc.nist.gov/pubs/sp/800/61/r2/final', desc: 'Computer Security Incident Handling Guide', cat: 'SPEC', part: '8' },
+    ];
+
+    let activeTag = 'ALL';
+
+    function filterResources() {
+      const query = document.getElementById('res-search').value.toLowerCase().trim();
+      renderTable(query, activeTag);
+    }
+
+    function filterByTag(btn) {
+      document.querySelectorAll('.res-tag-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeTag = btn.getAttribute('data-cat');
+      filterResources();
+    }
+
+    function renderTable(query = '', cat = 'ALL') {
+      const body = document.getElementById('res-table-body');
+      const countLabel = document.getElementById('res-count-label');
+      const filtered = RESOURCES.filter(r => {
+        const matchCat = cat === 'ALL' || r.cat === cat;
+        const matchQuery = !query ||
+          r.title.toLowerCase().includes(query) ||
+          r.desc.toLowerCase().includes(query) ||
+          r.cat.toLowerCase().includes(query) ||
+          r.part.toLowerCase().includes(query);
+        return matchCat && matchQuery;
+      });
+
+      if (filtered.length === 0) {
+        body.innerHTML = '<div class="res-no-results">// NO RESOURCES MATCHED — TRY A DIFFERENT QUERY</div>';
+        countLabel.textContent = 'Showing 0 resources';
+        return;
+      }
+
+      countLabel.textContent = `Showing ${filtered.length} of ${RESOURCES.length} resources`;
+      body.innerHTML = filtered.map((r, i) => `
+        <div class="res-table-row">
+          <span class="res-row-num">${String(i + 1).padStart(2, '0')}</span>
+          <div class="res-row-main">
+            <div class="res-row-title"><a href="${r.url}" target="_blank" rel="noopener">${r.title}</a></div>
+            <div class="res-row-desc">${r.desc}</div>
+          </div>
+          <span class="res-cat-badge">${catIcon(r.cat)} ${r.cat}</span>
+          <span class="res-part-badge">PART ${r.part}</span>
+        </div>
+      `).join('');
+    }
+
+    function catIcon(cat) {
+      return { VIDEO:'📺', TOOL:'🛠', LAB:'🧪', READ:'📑', SPEC:'📐' }[cat] || '🔗';
+    }
+
+    // Initial render
+    renderTable();
   </script>
 
 </body>
