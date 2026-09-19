@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBERMANAGEMENT // 0xSHARON</title>
+  <meta name="description" content="Cybersecurity Management: The 32-Week Self-Study Study Book by 0xSHARON. 3,513 pages, 10 parts, 157+ free resources, video showcase and interactive PDF reader.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;0,800;1,700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0e0e0e;
+      --paper: #e6e3dc;
+      --paper-light: #f4f2eb;
+      --orange: #ff4b00;
+      --orange-dark: #c23a00;
+      --concrete: #bfbbb3;
+      --concrete-dark: #4a4843;
+      --border-w: 3px;
+      --shadow-sm: 4px 4px 0px #0e0e0e;
+      --shadow-md: 6px 6px 0px #0e0e0e;
+      --shadow-lg: 10px 10px 0px #0e0e0e;
+      --shadow-orange: 6px 6px 0px #ff4b00;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.5;
+      overflow-x: hidden;
+      background-image: radial-gradient(var(--concrete) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* HAZARD TAPE */
+    .hazard-stripe {
+      height: 14px;
+      width: 100%;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--ink),
+        var(--ink) 12px,
+        var(--orange) 12px,
+        var(--orange) 24px
+      );
+      border-bottom: 2px solid var(--ink);
+    }
+
+    /* MARQUEE RUNNER */
+    .marquee-bar {
+      background: var(--ink);
+      color: var(--paper-light);
+      padding: 7px 0;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+      border-bottom: var(--border-w) solid var(--ink);
+    }
+    .marquee-inner {
+      display: inline-block;
+      animation: marquee 24s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* HEADER & NAV */
+    header {
+      background: var(--paper-light);
+      border-bottom: var(--border-w) solid var(--ink);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .brand-box {
+      background: var(--orange);
+      color: var(--paper-light);
+      padding: 4px 10px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      border: var(--border-w) solid var(--ink);
+      box-shadow: 3px 3px 0px var(--ink);
+    }
+    .brand-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink);
+      background: var(--paper-light);
+      border: var(--border-w) solid var(--ink);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.1s ease;
+    }
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow-md);
+      background: var(--paper);
+    }
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--ink);
+    }
+    .btn-orange {
+      background: var(--orange);
+      color: #fff;
+    }
+    .btn-orange:hover {
+      background: var(--orange-dark);
+      color: #fff;
+    }
+    .btn-dark {
+      background: var(--ink);
+      color: var(--orange);
+    }
+    .btn-dark:hover {
+      background: #222;
+      color: #fff;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 50px 20px 30px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    .hero-main {
+      background: var(--paper-light);
+      border: var(--border-w) solid var(--ink);
+      box-shadow: var(--shadow-lg);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .pill {
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+      text-transform: uppercase;
+    }
+    .pill-orange {
+      background: var(--orange);
+      color: #fff;
+    }
+    .pill-dark {
+      background: var(--ink);
+      color: var(--paper-light);
+    }
+
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      color: var(--ink);
+    }
+    .hero-title span {
+      background: var(--orange);
+      color: #fff;
+      padding: 0 6px;
+      display: inline-block;
+    }
+    .hero-desc {
+      font-size: 0.98rem;
+      margin-bottom: 28px;
+      color: #222;
+      border-left: 4px solid var(--orange);
+      padding-left: 14px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .stat-card {
+      background: var(--ink);
+      color: var(--paper-light);
+      border: var(--border-w) solid var(--ink);
+      box-shadow: var(--shadow-md);
+      padding: 22px 20px;
+      position: relative;
+    }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--concrete);
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 0.78rem;
+    }
+    .spec-table td {
+      padding: 6px 0;
+      border-bottom: 1px dashed #333;
+    }
+    .spec-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+      color: var(--orange);
+    }
+
+    /* SECTION CONTAINERS */
+    .section-wrap {
+      max-width: 1320px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: var(--border-w) solid var(--ink);
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::before {
+      content: '//';
+      color: var(--orange);
+    }
+
+    /* VIDEO SHOWCASE SECTION */
+    .video-viewport {
+      background: var(--ink);
+      border: var(--border-w) solid var(--ink);
+      box-shadow: var(--shadow-lg);
+      padding: 16px;
+      position: relative;
+    }
+    .video-hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      color: var(--paper-light);
+      font-size: 0.76rem;
+      font-weight: 700;
+      border-bottom: 1px solid #2a2a2a;
+      margin-bottom: 14px;
+    }
+    .rec-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ff3333;
+    }
+    .rec-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff3333;
+      animation: blink 1.2s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+    .video-container {
+      position: relative;
+      background: #000;
+      border: 2px solid #333;
+      overflow: hidden;
+    }
+    video {
+      width: 100%;
+      display: block;
+      max-height: 640px;
+      object-fit: contain;
+      background: #000;
+    }
+    .video-controls-bar {
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px solid #2a2a2a;
+    }
+    .video-desc {
+      color: var(--concrete);
+      font-size: 0.8rem;
+    }
+
+    /* CURRICULUM GRID */
+    .parts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .part-card {
+      background: var(--paper-light);
+      border: var(--border-w) solid var(--ink);
+      box-shadow: var(--shadow-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      position: relative;
+      cursor: pointer;
+    }
+    .part-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 8px 8px 0px var(--orange);
+    }
+    .part-card-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 0.9;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+    .part-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .part-card-sub {
+      font-size: 0.78rem;
+      color: #333;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+    .part-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 2px dashed var(--concrete);
+      padding-top: 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    /* PDF READER SECTION */
+    .reader-box {
+      background: var(--paper-light);
+      border: var(--border-w) solid var(--ink);
+      box-shadow: var(--shadow-lg);
+      padding: 20px;
+    }
+    .reader-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+      background: var(--ink);
+      color: var(--paper-light);
+      padding: 12px 18px;
+      border: 2px solid var(--ink);
+    }
+    .reader-title-label {
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .reader-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .pdf-frame-wrapper {
+      position: relative;
+      width: 100%;
+      height: 820px;
+      border: var(--border-w) solid var(--ink);
+      background: #2b2b2b;
+    }
+    .pdf-frame-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .mobile-pdf-notice {
+      display: none;
+      background: var(--orange);
+      color: #fff;
+      padding: 16px;
+      font-weight: 700;
+      text-align: center;
+      border: var(--border-w) solid var(--ink);
+      margin-top: 10px;
+    }
+    @media (max-width: 768px) {
+      .pdf-frame-wrapper { height: 480px; }
+      .mobile-pdf-notice { display: block; }
+    }
+
+    /* RESOURCE CATEGORIES TICKER */
+    .tags-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .tag-box {
+      background: var(--paper-light);
+      border: var(--border-w) solid var(--ink);
+      box-shadow: var(--shadow-sm);
+      padding: 16px;
+    }
+    .tag-name {
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: var(--paper-light);
+      border-top: var(--border-w) solid var(--ink);
+      margin-top: 80px;
+      padding: 50px 20px 20px;
+    }
+    .footer-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #333;
+    }
+    @media (max-width: 768px) {
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .footer-col h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+    .footer-col ul li a {
+      color: var(--concrete);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.1s;
+    }
+    .footer-col ul li a:hover {
+      color: var(--orange);
+    }
+    .footer-bottom {
+      max-width: 1320px;
+      margin: 20px auto 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--concrete-dark);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HAZARD TAPE -->
+  <div class="hazard-stripe"></div>
+
+  <!-- RUNNING MARQUEE -->
+  <div class="marquee-bar">
+    <div class="marquee-inner">
+      // 0xSHARON SYSTEM DIRECTORY // CYBERSECURITY MANAGEMENT SELF-STUDY // 32-WEEK CURRICULUM // 3,513 CONVERGED PAGES // 157+ LABS, TOOLS & FREE REPOSITORIES // ZERO BULLSHIT // 100% BRUTALIST // 0xSHARON SYSTEM DIRECTORY // CYBERSECURITY MANAGEMENT SELF-STUDY // 32-WEEK CURRICULUM // 3,513 CONVERGED PAGES // 157+ LABS, TOOLS & FREE REPOSITORIES // ZERO BULLSHIT // 100% BRUTALIST
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <span class="brand-box">0xS</span>
+        <span class="brand-title">CYBERMANAGEMENT</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#showcase" class="btn">[VIDEO FEED]</a>
+        <a href="#curriculum" class="btn">[CURRICULUM]</a>
+        <a href="#reader" class="btn btn-orange">[READ STUDY BOOK]</a>
+        <a href="Cybersecurity_Management_Study_Book_0xSHARON.pdf" download class="btn btn-dark">[GET PDF]</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main class="hero">
+    <div class="hero-grid">
+      <div class="hero-main">
+        <div>
+          <div class="badge-row">
+            <span class="pill pill-orange">32 WEEKS</span>
+            <span class="pill pill-dark">10 MASTER PARTS</span>
+            <span class="pill">CISM ALIGNED</span>
+            <span class="pill">ISO/IEC 27001</span>
+            <span class="pill">157+ FREE LINKS</span>
+          </div>
+          <h1 class="hero-title">
+            CYBERSECURITY<br>
+            <span>MANAGEMENT</span><br>
+            STUDY BOOK
+          </h1>
+          <p class="hero-desc">
+            You cannot govern what you cannot picture. A complete, uncompromised self-study master companion for technical leaders, architects, and CISOs. Turn real-world computing trust, protocols, offensive kill chains, cryptography, zero-trust identity, and regulatory frameworks into an executable 32-week roadmap.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <a href="#reader" class="btn btn-orange" style="font-size:0.95rem; padding:12px 22px;">
+            📖 LAUNCH PDF READER
+          </a>
+          <a href="#showcase" class="btn" style="font-size:0.95rem; padding:12px 22px;">
+            ▶ WATCH SHOWCASE VIDEO
+          </a>
+          <a href="Cybersecurity_Management_Study_Book_0xSHARON.pdf" download class="btn btn-dark" style="font-size:0.95rem; padding:12px 22px;">
+            ⬇ DOWNLOAD PDF (12.2 MB)
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-sidebar">
+        <div class="stat-card">
+          <div class="stat-num">3,513</div>
+          <div class="stat-label">TOTAL CONVERGED PAGES</div>
+          <table class="spec-table">
+            <tr><td>EDITION</td><td>2026 BRUTAL V3</td></tr>
+            <tr><td>AUTHOR</td><td>0xSHARON</td></tr>
+            <tr><td>STUDY PACING</td><td>6 HOURS / WEEK</td></tr>
+            <tr><td>PRACTICAL LABS</td><td>OVERTHEWIRE, THM, CIS</td></tr>
+            <tr><td>COMPLIANCE</td><td>NIS2, DORA, ISO 27001</td></tr>
+          </table>
+        </div>
+
+        <div class="stat-card" style="background: var(--paper-light); color: var(--ink);">
+          <div class="stat-num" style="color: var(--ink);">100%</div>
+          <div class="stat-label" style="color: var(--concrete-dark);">FREE & OPEN RESOURCES</div>
+          <p style="font-size: 0.8rem; margin-top: 10px; color: #444;">
+            Zero paywalled dependencies. Every single video lecture, lab environment, open-source tool, RFC specification, and regulatory guide is fully verified and free to access.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- VIDEO SHOWCASE SECTION -->
+  <section id="showcase" class="section-wrap">
+    <div class="section-header">
+      <h2 class="section-title">VIDEO FEED // SYSTEM SHOWCASE</h2>
+      <span class="pill pill-orange">FILE: brag.mp4 (16.3 MB)</span>
+    </div>
+
+    <div class="video-viewport">
+      <div class="video-hud">
+        <div class="rec-indicator">
+          <span class="rec-dot"></span>
+          <span>REC FEED // 0xSHARON_SHOWCASE</span>
+        </div>
+        <div>FORMAT: MP4 // 1080P // 60 FPS // STEREO</div>
+      </div>
+
+      <div class="video-container">
+        <video id="brag-video" controls playsinline preload="metadata">
+          <source src="brag.mp4" type="video/mp4">
+          Your browser does not support HTML5 video streaming. Please download brag.mp4 directly.
+        </video>
+      </div>
+
+      <div class="video-controls-bar">
+        <div class="video-desc">
+          // Walkthrough and visual overview of the Cybersecurity Management Study Architecture.
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-dark" onclick="toggleVideoPlayback()">[PLAY / PAUSE]</button>
+          <button class="btn" onclick="toggleFullscreenVideo()">[FULLSCREEN]</button>
+          <a href="brag.mp4" download class="btn btn-orange">[DOWNLOAD VIDEO]</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM SECTION -->
+  <section id="curriculum" class="section-wrap">
+    <div class="section-header">
+      <h2 class="section-title">THE 10 MASTER DOMAINS</h2>
+      <span class="pill pill-dark">32-WEEK TIMELINE</span>
+    </div>
+
+    <div class="parts-grid">
+      <!-- Part 1 -->
+      <div class="part-card" onclick="jumpToPart(1)">
+        <div>
+          <div class="part-card-num">01</div>
+          <h3 class="part-card-title">Foundations</h3>
+          <p class="part-card-sub">CPU rings, Linux FHS, system calls, OSI & TCP/IP models, packet encapsulation, and the CIA triad axiomatic bedrock.</p>
+        </div>
+        <div class="part-card-footer">
+          <span>WEEKS 01–05</span>
+          <span style="color:var(--orange);">30 H STUDY</span>
+        </div>
+      </div>
+
+      <!-- Part 2 -->
+      <div class="part-card" onclick="jumpToPart(2)">
+        <div>
+          <div class="part-card-num">02</div>
+          <h3 class="part-card-title">Threat Landscape</h3>
+          <p class="part-card-sub">Adversary taxonomy, Lockheed Martin Cyber Kill Chain, MITRE ATT&CK matrix, social engineering vectors, and ransomware operations.</p>
+        </div>
+        <div class="part-card-footer">
+          <span>WEEKS 06–08</span>
+          <span style="color:var(--orange);">18 H STUDY</span>
+        </div>
+      </div>
+
+      <!-- Part 3 -->
+      <div class="part-card" onclick="jumpToPart(3)">
+        <div>
+          <div class="part-card-num">03</div>
+          <h3 class="part-card-title">Cryptography</h3>
+          <p class="part-card-sub">Symmetric & asymmetric ciphers, hashing, digital signatures, PKI certificate chains, and the TLS 1.3 cryptographic handshake.</p>
+        </div>
+        <div class="part-card-footer">
+          <span>WEEKS 09–11</span>
+          <span style="color:var(--orange);">18 H STUDY</span>
+        </div>
+      </div>
+
+      <!-- Part 4 -->
+      <div class="part-card" onclick="jumpToPart(4)">
+        <div>
+          <div class="part-card-num">04</div>
+          <h3 class="part-card-title">IAM & Zero Trust</h3>
+          <p class="part-card-sub">Identity lifecycle, FIDO2 WebAuthn, OAuth 2.0 / OIDC tokens, Privileged Access Management (PAM), and NIST SP 800-207 Zero Trust.</p>
+        </div>
+        <div class="part-card-footer">
+          <span>WEEKS 12–14</span>
+          <span style="color:var(--orange);">18 H STUDY</span>
+        </div>
+      </div>
+
+      <!-- Part 5 -->
+      <div class="part-card" onclick="jumpToPart(5)">
+        <div>
+          <div class="part-card-num">05</div>
+          <h3 class="part-card-title">Network Security</h3>
+          <p class="part-card-sub">Micro-segmentation, stateful firewalls, IDS/IPS signatures, WireGuard VPNs, WPA3 enterprise, and perimeter defense-in-depth.</p>
+        </div>
+        <div class="part-card-footer">
+          <span>WEEKS 15–17</span>
+          <span style="color:var(--orange);">18 H STUDY</span>
+        </div>
+      </div>
+
+      <!-- Part 6 -->
+      <div class="part-card" onclick="jumpToPart(6)">
+        <div>
+          <div class="part-card-num">06</div>
+          <h3 class="part-card-title">App Security</h3>
+          <p class="part-card-sub">OWASP Top 10 web vulnerabilities, DevSecOps CI/CD pipelines, SAST/DAST/SCA tooling, and software supply chain security (SBOM).</p>
+        </div>
+        <div class="part-card-footer">
+          <span>WEEKS 18–20</span>
+          <span style="color:var(--orange);">18 H STUDY</span>
+        </div>
+      </div>
+
+      <!-- Part 7 -->
+      <div class="part-card" onclick="jumpToPart(7)">
+        <div>
+          <div class="part-card-num">07</div>
+          <h3 class="part-card-title">Cloud & Emerging</h3>
+          <p class="part-card-sub">AWS/Azure/GCP shared responsibility, CSPM/CNAPP configurations, container security (Kubernetes), AI LLM security, and quantum crypto.</p>
+        </div>
+        <div class="part-card-footer">
+          <span>WEEKS 21–23</span>
+          <span style="color:var(--orange);">18 H STUDY</span>
+        </div>
+      </div>
+
+      <!-- Part 8 -->
+      <div class="part-card" onclick="jumpToPart(8)">
+        <div>
+          <div class="part-card-num">08</div>
+          <h3 class="part-card-title">Sec Operations</h3>
+          <p class="part-card-sub">SOC tiering, SIEM correlation rule engineering, proactive threat hunting, chain of custody digital forensics, and NIST SP 800-61 incident response.</p>
+        </div>
+        <div class="part-card-footer">
+          <span>WEEKS 24–26</span>
+          <span style="color:var(--orange);">18 H STUDY</span>
+        </div>
+      </div>
+
+      <!-- Part 9 -->
+      <div class="part-card" onclick="jumpToPart(9)">
+        <div>
+          <div class="part-card-num">09</div>
+          <h3 class="part-card-title">Governance & Risk</h3>
+          <p class="part-card-sub">ISMS implementation under ISO/IEC 27001:2022, quantitative FAIR risk modeling, NIST CSF 2.0 governance, and enterprise BCP/DR.</p>
+        </div>
+        <div class="part-card-footer">
+          <span>WEEKS 27–29</span>
+          <span style="color:var(--orange);">18 H STUDY</span>
+        </div>
+      </div>
+
+      <!-- Part 10 -->
+      <div class="part-card" onclick="jumpToPart(10)">
+        <div>
+          <div class="part-card-num">10</div>
+          <h3 class="part-card-title">Leadership & Capstone</h3>
+          <p class="part-card-sub">Third-party risk management (TPRM), board executive metrics, GDPR/NIS2/DORA compliance, and building an end-to-end security programme.</p>
+        </div>
+        <div class="part-card-footer">
+          <span>WEEKS 30–32</span>
+          <span style="color:var(--orange);">18 H STUDY</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PDF VIEWER SECTION -->
+  <section id="reader" class="section-wrap">
+    <div class="section-header">
+      <h2 class="section-title">INTERACTIVE PDF VIEWER</h2>
+      <span class="pill pill-orange">3,513 PAGES // 12.2 MB</span>
+    </div>
+
+    <div class="reader-box">
+      <div class="reader-toolbar">
+        <div class="reader-title-label">
+          <span>📄</span>
+          <span>Cybersecurity_Management_Study_Book_0xSHARON.pdf</span>
+        </div>
+        <div class="reader-actions">
+          <a href="Cybersecurity_Management_Study_Book_0xSHARON.pdf" target="_blank" class="btn btn-dark">[FULLSCREEN TAB ↗]</a>
+          <a href="Cybersecurity_Management_Study_Book_0xSHARON.pdf" download class="btn btn-orange">[DOWNLOAD (12.2 MB)]</a>
+        </div>
+      </div>
+
+      <div class="pdf-frame-wrapper" id="frame-container">
+        <iframe id="pdf-viewer" src="Cybersecurity_Management_Study_Book_0xSHARON.pdf#toolbar=1&navpanes=1"></iframe>
+      </div>
+
+      <div class="mobile-pdf-notice">
+        ⚡ On mobile devices, tap below to open the complete 3,513-page book directly in your PDF viewer:
+        <br><br>
+        <a href="Cybersecurity_Management_Study_Book_0xSHARON.pdf" target="_blank" class="btn btn-dark" style="color:#fff;">[OPEN STUDY BOOK PDF]</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCE TAGS MATRIX -->
+  <section class="section-wrap">
+    <div class="section-header">
+      <h2 class="section-title">RESOURCE CLASSIFICATION</h2>
+      <span class="pill pill-dark">157+ VERIFIED ASSETS</span>
+    </div>
+    <div class="tags-container">
+      <div class="tag-box" style="border-left: 6px solid var(--orange);">
+        <div class="tag-name"><span>📺</span> VIDEO / SEARCH</div>
+        <p style="font-size:0.75rem; color:#444;">Curated master lectures from Professor Messer, freeCodeCamp, John Hammond, and pre-filled search links that never break.</p>
+      </div>
+      <div class="tag-box" style="border-left: 6px solid var(--ink);">
+        <div class="tag-name"><span>🛠</span> TOOLS & HYPERVISORS</div>
+        <p style="font-size:0.75rem; color:#444;">VirtualBox, Kali Linux VM images, Wireshark, Nmap, Burp Suite Community, and Anki flashcard spaced-repetition desks.</p>
+      </div>
+      <div class="tag-box" style="border-left: 6px solid var(--orange);">
+        <div class="tag-name"><span>🧪</span> HANDS-ON LABS</div>
+        <p style="font-size:0.75rem; color:#444;">OverTheWire Bandit, TryHackMe Pre-Security, PortSwigger Web Security Academy, and isolated local lab environments.</p>
+      </div>
+      <div class="tag-box" style="border-left: 6px solid var(--ink);">
+        <div class="tag-name"><span>📑</span> AUTHORITATIVE READS</div>
+        <p style="font-size:0.75rem; color:#444;">NIST SP 800 series, ISO/IEC 27001:2022 clauses, CISM exam domain breakdowns, RFC internet standards, and European NIS2 directives.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">0xSHARON // CYBERMANAGEMENT</div>
+        <p style="color: var(--concrete); font-size: 0.85rem; max-width: 500px; margin-bottom: 16px;">
+          An open, uncompromising self-study framework engineering cybersecurity management from foundational CPU privilege rings all the way to board-level governance.
+        </p>
+        <div style="font-size: 0.75rem; color: var(--concrete);">
+          AUTHOR: <span style="color:var(--orange);">0xSHARON</span> // GITHUB REPOSITORY: <span style="color:var(--orange);">0xSHARON/cybermanagement</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>NAVIGATION</h4>
+        <ul>
+          <li><a href="#showcase">Showcase Video</a></li>
+          <li><a href="#curriculum">10-Part Curriculum</a></li>
+          <li><a href="#reader">Interactive PDF Reader</a></li>
+          <li><a href="Cybersecurity_Management_Study_Book_0xSHARON.pdf" download>Download Study Book</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>COMPLIANCE & CERTS</h4>
+        <ul>
+          <li><a href="https://isaca.org/credentialing/cism" target="_blank">ISACA CISM (Domain Aligned)</a></li>
+          <li><a href="https://www.iso.org/standard/27001" target="_blank">ISO/IEC 27001:2022</a></li>
+          <li><a href="https://csrc.nist.gov/projects/cybersecurity-framework" target="_blank">NIST CSF 2.0</a></li>
+          <li><a href="https://attack.mitre.org/" target="_blank">MITRE ATT&CK Matrix</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 0xSHARON. 100% OPEN ARCHITECTURE. VERIFY BEFORE RELYING.</div>
+      <div>BUILT WITH REPORTLAB & BRUTALIST WEB SPEC</div>
+    </div>
+  </footer>
+
+  <!-- INTERACTION SCRIPT -->
+  <script>
+    const video = document.getElementById('brag-video');
+
+    function toggleVideoPlayback() {
+      if (!video) return;
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+
+    function toggleFullscreenVideo() {
+      if (!video) return;
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      }
+    }
+
+    function jumpToPart(partNumber) {
+      const readerSection = document.getElementById('reader');
+      if (readerSection) {
+        readerSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+
+</body>
+</html>
